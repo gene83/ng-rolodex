@@ -13,4 +13,4 @@ class User extends bookshelf.Model {
   }
 }
 
-module.exports('User', User);
+module.exports = bookshelf.model('User', User);
