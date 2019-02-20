@@ -1,4 +1,5 @@
 const bookshelf = require('./bookshelf');
+require('./User');
 
 class Contact extends bookshelf.Model {
   get tableName() {
@@ -9,7 +10,7 @@ class Contact extends bookshelf.Model {
   }
 
   users() {
-    return this.belongsTo('users');
+    return this.belongsTo('User', 'created_by', 'id');
   }
 }
 
