@@ -29,10 +29,10 @@ router.put('/users', (req, res) => {
     .then(dbUser => {
       dbUser
         .save(editedUser)
-        .then(() => {
-          return res.json({
-            success: true
-          });
+        .then(resUser => {
+          delete resUser.id;
+
+          return res.json(resUser);
         })
         .catch(err => {
           res.status(500);
@@ -155,6 +155,8 @@ router.post('/contacts', (req, res) => {
   new Contact(newContact)
     .save()
     .then(dbContact => {
+      delete dbContact.id;
+
       return res.json(dbContact);
     })
     .catch(err => {
