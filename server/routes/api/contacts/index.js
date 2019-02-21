@@ -34,7 +34,7 @@ router.get('/search/:term', isAuthenticated, (req, res) => {
   const userId = req.user.id;
 
   Contact.where('created_by', userId)
-    .fetchAll({ withRelated: ['users'] })
+    .fetchAll()
     .then(contacts => {
       if (contacts === null) {
         return res.json({});
@@ -46,7 +46,9 @@ router.get('/search/:term', isAuthenticated, (req, res) => {
         const contactValues = Object.values(contact);
 
         return contactValues.some(value => {
-          value.includes(searchTerm);
+          if (typeof value === 'string') {
+            return value.includes(searchTerm);
+          }
         });
       });
 
@@ -67,8 +69,6 @@ router.post('/', isAuthenticated, (req, res) => {
   new Contact(newContact)
     .save()
     .then(dbContact => {
-      delete dbContact.id;
-
       return res.json(dbContact);
     })
     .catch(err => {
@@ -105,7 +105,26 @@ router.get('/:id', isAuthenticated, (req, res) => {
 
 router.put('/:id', isAuthenticated, (req, res) => {
   const contactId = req.params.id;
-  const editedContact = req.body;
+  const {
+    name,
+    address,
+    mobile,
+    work,
+    email,
+    twitter,
+    instagram,
+    github
+  } = req.body;
+  const editedContact = {
+    name,
+    address,
+    mobile,
+    work,
+    email,
+    twitter,
+    instagram,
+    github
+  };
 
   Contact.where('id', contactId)
     .fetch({ withRelated: ['users'] })

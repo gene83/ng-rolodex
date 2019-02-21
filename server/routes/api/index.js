@@ -21,7 +21,7 @@ router.get('/profile', isAuthenticated, (req, res) => {
   User.where('id', userId)
     .fetch()
     .then(dbUser => {
-      return res.JSON(dbUser);
+      return res.json(dbUser);
     })
     .catch(err => {
       res.status(500);
@@ -34,16 +34,15 @@ router.get('/profile', isAuthenticated, (req, res) => {
 
 router.put('/users', isAuthenticated, (req, res) => {
   const userId = req.user.id;
-  const editedUser = req.body;
+  const { username, name, email, address } = req.body;
+  const editedUserReq = { username, name, email, address };
 
   User.where('id', userId)
     .fetch()
     .then(dbUser => {
       dbUser
-        .save(editedUser)
+        .save(editedUserReq)
         .then(resUser => {
-          delete resUser.id;
-
           return res.json(resUser);
         })
         .catch(err => {
