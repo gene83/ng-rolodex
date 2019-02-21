@@ -4,14 +4,33 @@
   <div>
     <label for="username">Username:</label>
   </div>
-  <input type="text" name="username" [(ngModel)]="formData.username" />
+  <input
+    type="text"
+    name="username"
+    [class.error]="isUsernameInvalid && username.touched"
+    [(ngModel)]="formData.username"
+    (keyup)="validateUsername()"
+    #username="ngModel"
+  />
 
   <div>
     <label for="password">Password:</label>
   </div>
-  <input type="password" name="password" [(ngModel)]="formData.password" />
+  <input
+    type="password"
+    name="password"
+    [class.error]="isPasswordInvalid && password.touched"
+    [(ngModel)]="formData.password"
+    (keyup)="validatePassword()"
+    #password="ngModel"
+  />
 
   <div>
-    <button>Login</button>
+    <button
+      (click)="(login)"
+      [disabled]="isUsernameInvalid || isPasswordInvalid"
+    >
+      Login
+    </button>
   </div>
 </form>
