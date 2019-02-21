@@ -89,7 +89,7 @@ router.post('/register', (req, res) => {
       });
     }
 
-    bycrpt.hash(newUser.password, salt, (err, hash) => {
+    bcrypt.hash(newUser.password, salt, (err, hash) => {
       if (err) {
         res.status(500);
         return res.json({
