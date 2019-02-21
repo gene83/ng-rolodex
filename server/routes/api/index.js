@@ -43,8 +43,6 @@ router.put('/users', isAuthenticated, (req, res) => {
       dbUser
         .save(editedUserReq)
         .then(resUser => {
-          resUser = resUser.toJSON();
-          delete resUser.id;
           return res.json(resUser);
         })
         .catch(err => {
