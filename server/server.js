@@ -7,6 +7,8 @@ const bcrypt = require('bcryptjs');
 const redis = require('connect-redis')(session);
 
 const api = require('./routes/api');
+const contactRouter = require('./routes/api/contacts');
+const User = require('../database/models/User');
 
 const PORT = process.env.PORT || 8080;
 const ENV = process.env.NODE_ENV || 'development';
@@ -80,6 +82,7 @@ passport.use(
 );
 
 app.use('/api', api);
+app.use('/api/contacts', contactRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT: ${PORT}`);
