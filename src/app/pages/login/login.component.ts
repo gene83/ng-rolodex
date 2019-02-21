@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   templateUrl: './login.component.html',
@@ -16,7 +17,7 @@ export class LoginComponent {
   isUsernameInvalid: boolean = true;
   isPasswordInvalid: boolean = true;
 
-  constructor() {}
+  constructor(private backend: LoginService) {}
 
   validateUsername() {
     const { username } = this.formData;
@@ -34,13 +35,13 @@ export class LoginComponent {
     }
   }
 
-  validatepassword() {
+  validatePassword() {
     const { password } = this.formData;
 
     if (!password) {
       this.isPasswordInvalid = true;
-    } else if (password.length < 3) {
-      this.isPasswordInvalid = true;
+      // } else if (password.length < 3) {
+      // this.isPasswordInvalid = true;
     } else if (password.length > 16) {
       this.isPasswordInvalid = true;
     } else if (password.match(/\W/)) {
@@ -50,5 +51,14 @@ export class LoginComponent {
     }
   }
 
-  login() {}
+  login() {
+    this.backend
+      .login(this.formData)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 }
