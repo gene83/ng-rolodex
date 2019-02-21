@@ -1,10 +1,22 @@
 const express = require('express');
-const router = express.Router();
+const bcrypt = require('bcryptjs');
+const saltRounds = 12;
+
 const User = require('../../../database/models/User');
 const Contact = require('../../../database/models/Contact');
 
-router.get('/profile', (req, res) => {
-  const userId = localStorage.getItem('user_id');
+const router = express.Router();
+
+function isAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    res.redirect('/');
+  }
+}
+
+router.get('/profile', isAuthenticated, (req, res) => {
+  const userId = req.user.id;
 
   User.where('id', userId)
     .fetch()
@@ -20,8 +32,8 @@ router.get('/profile', (req, res) => {
     });
 });
 
-router.put('/users', (req, res) => {
-  const userId = localStorage.getItem('user_id');
+router.put('/users', isAuthenticated, (req, res) => {
+  const userId = req.user.id;
   const editedUser = req.body;
 
   User.where('id', userId)
@@ -51,57 +63,66 @@ router.put('/users', (req, res) => {
     });
 });
 
-router.post('/login', (req, res) => {
-  const username = req.body.username;
-
-  User.where('username', username)
-    .fetch()
-    .then(dbUser => {
-      if (dbUser === null) {
-        return res.json({
-          success: false,
-          error: `User ${username} does not exist.`
-        });
-      }
-
-      localStorage.setItem('user_id', dbUser.id);
-      return res.json({
-        success: true
-      });
-    })
-    .catch(err => {
-      res.status(500);
-      return res.json({
-        success: false,
-        err: err
-      });
-    });
+router.post('/login', passport.authenticate('local'), (req, res) => {
+  res.json({
+    success: true
+  });
 });
 
 router.post('/logout', (req, res) => {
-  localStorage.removeItem('user_id');
-  return res.redirect('/');
+  req.logout();
+  res.json({
+    success: true
+  });
 });
 
 router.post('/register', (req, res) => {
   const newUser = req.body;
 
-  new User(newUser)
-    .save()
-    .then(() => {
-      return res.redirect('/');
-    })
-    .catch(err => {
+  bcrypt.genSalt(saltRounds, (err, salt) => {
+    if (err) {
       res.status(500);
       return res.json({
         success: false,
         error: err
       });
+    }
+
+    bycrpt.hash(newUser.password, salt, (err, hash) => {
+      if (err) {
+        res.status(500);
+        return res.json({
+          success: false,
+          error: err
+        });
+      }
+
+      return new User({
+        username: newUser.username,
+        password: hash,
+        name: newUser.name,
+        email: newUser.email,
+        address: newUser.address
+      })
+        .save()
+        .then(() => {
+          res.json({
+            success: true
+          });
+        })
+        .catch(err => {
+          res.status(500);
+          res.json({
+            success: false,
+            error: err
+          });
+        });
     });
+  });
 });
 
-router.get('/contacts', (req, res) => {
-  const userId = localStorage.getItem('user_id');
+router.get('/contacts', isAuthenticated, (req, res) => {
+  const userId = req.user.id;
 
   Contact.where('created_by', userId)
     .fetchAll({ withRelated: ['users'] })
@@ -117,9 +138,9 @@ router.get('/contacts', (req, res) => {
     });
 });
 
-router.get('/contacts/search/:term', (req, res) => {
+router.get('/contacts/search/:term', isAuthenticated, (req, res) => {
   const searchTerm = req.params.term;
-  const userId = localStorage.getItem('user_id');
+  const userId = req.user.id;
 
   Contact.where('created_by', userId)
     .fetchAll({ withRelated: ['users'] })
@@ -149,7 +170,7 @@ router.get('/contacts/search/:term', (req, res) => {
     });
 });
 
-router.post('/contacts', (req, res) => {
+router.post('/contacts', isAuthenticated, (req, res) => {
   const newContact = req.body;
 
   new Contact(newContact)
@@ -168,10 +189,10 @@ router.post('/contacts', (req, res) => {
     });
 });
 
-router.get('/contacts/:id', (req, res) => {
-  const id = req.params.id;
+router.get('/contacts/:id', isAuthenticated, (req, res) => {
+  const contactId = req.params.id;
 
-  Contact.where('id', id)
+  Contact.where('id', contactId)
     .fetch({ withRelated: ['users'] })
     .then(contact => {
       if (contact === null) {
@@ -191,11 +212,11 @@ router.get('/contacts/:id', (req, res) => {
     });
 });
 
-router.put('/contacts/:id', (req, res) => {
-  const id = req.params.id;
+router.put('/contacts/:id', isAuthenticated, (req, res) => {
+  const contactId = req.params.id;
   const editedContact = req.body;
 
-  Contact.where('id', id)
+  Contact.where('id', contactId)
     .fetch({ withRelated: ['users'] })
     .then(dbContact => {
       if (dbContact === null) {
@@ -226,10 +247,10 @@ router.put('/contacts/:id', (req, res) => {
     });
 });
 
-router.delete('/contacts/:id', (req, res) => {
-  const id = req.params.id;
+router.delete('/contacts/:id', isAuthenticated, (req, res) => {
+  const contactId = req.params.id;
 
-  Contact.where('id', id)
+  Contact.where('id', contactId)
     .destroy()
     .then(() => {
       res.status(200);
