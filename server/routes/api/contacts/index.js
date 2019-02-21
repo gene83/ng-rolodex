@@ -67,8 +67,6 @@ router.post('/', isAuthenticated, (req, res) => {
   new Contact(newContact)
     .save()
     .then(dbContact => {
-      delete dbContact.id;
-
       return res.json(dbContact);
     })
     .catch(err => {
