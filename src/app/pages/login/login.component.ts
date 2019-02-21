@@ -49,4 +49,6 @@ export class LoginComponent {
       this.isPasswordInvalid = false;
     }
   }
+
+  login() {}
 }
