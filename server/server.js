@@ -1,11 +1,10 @@
 const express = require('express');
-const session = require('session');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const localStrategy = require('passport-local');
 const bcrypt = require('bcryptjs');
 const redis = require('connect-redis')(session);
-const saltRounds = 12;
 
 const api = require('./routes/api');
 

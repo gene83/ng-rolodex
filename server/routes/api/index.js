@@ -1,5 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 const saltRounds = 12;
 
 const User = require('../../../database/models/User');
