@@ -43,11 +43,10 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((user, done) => {
-  user
-    .where('id', user.id)
+  User.where('id', user.id)
     .fetch()
     .then(dbUser => {
-      dbUser = dbUser.toJSON();
+      dbUser = dbUser.toJSON({ visibility: false });
       return done(null, {
         id: dbUser.id,
         username: dbUser.username
@@ -61,19 +60,20 @@ passport.deserializeUser((user, done) => {
 passport.use(
   new localStrategy((username, password, done) => {
     return User.where('username', username)
-      .fetch(user => {
+      .fetch()
+      .then(user => {
         if (user === null) {
           return done(null, false);
+        } else {
+          user = user.toJSON({ visibility: false });
+          bcrypt.compare(password, user.password).then(res => {
+            if (res) {
+              return done(null, user);
+            } else {
+              return done(null, false);
+            }
+          });
         }
-
-        user = user.toJSON();
-        bcrypt.compare(password, user.password).then(res => {
-          if (res) {
-            return done(null, user);
-          }
-
-          return done(null, false);
-        });
       })
       .catch(err => {
         return done(err);
