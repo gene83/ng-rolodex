@@ -20,4 +20,8 @@ export class AuthService {
       return this.session.setSession(res);
     });
   }
+
+  register(user) {
+    return this.backend.register(user);
+  }
 }
