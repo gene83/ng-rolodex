@@ -163,7 +163,6 @@ router.delete('/:id', isAuthenticated, (req, res) => {
   Contact.where('id', contactId)
     .destroy()
     .then(() => {
-      res.status(200);
       res.json({
         success: true
       });
