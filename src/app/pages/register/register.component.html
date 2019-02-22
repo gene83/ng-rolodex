@@ -1,0 +1,40 @@
+<h1>Register Page</h1>
+
+<form>
+  <div>
+    <label for="name">Name:</label>
+  </div>
+  <input type="text" name="name" [(ngModel)]="this.formData.name" />
+
+  <div>
+    <label for="username">Username:</label>
+  </div>
+  <input
+    type="text"
+    name="username"
+    [(ngModel)]="this.formData.username"
+    (keyup)="this.validateUsername()"
+  />
+
+  <div>
+    <label for="password">Password:</label>
+  </div>
+  <input
+    type="text"
+    name="password"
+    [(ngModel)]="this.formData.password"
+    (keyup)="this.validatePassword()"
+  />
+
+  <div>
+    <label for="email">Email:</label>
+  </div>
+  <input type="text" name="email" [(ngModel)]="this.formData.email" />
+
+  <div>
+    <label for="address">Address:</label>
+  </div>
+  <input type="text" name="address" [(ngModel)]="this.formData.address" />
+
+  <button (click)="this.registerUser()">Register</button>
+</form>
