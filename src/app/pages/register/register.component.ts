@@ -23,9 +23,9 @@ export class RegisterComponent {
 
   isUsernameInvalid: boolean = true;
   isPasswordInvalid: boolean = true;
-  isNameInvalid: boolean = true;
-  isEmailInvalid: boolean = true;
-  isAddressInvalid: boolean = true;
+  isNameInvalid: boolean = false;
+  isEmailInvalid: boolean = false;
+  isAddressInvalid: boolean = false;
 
   constructor(private auth: AuthService, private router: Router) {}
 
@@ -63,7 +63,6 @@ export class RegisterComponent {
 
   validateName() {
     const { name } = this.formData;
-
     if (name.length > 16) {
       this.isNameInvalid = true;
     } else if (name.match(/\W/)) {
@@ -76,7 +75,7 @@ export class RegisterComponent {
   validateEmail() {
     const { email } = this.formData;
 
-    if (email.length < 5) {
+    if (email.length < 5 && email.length !== 0) {
       this.isEmailInvalid = true;
     } else if (email.length > 30) {
       this.isEmailInvalid = true;
@@ -92,7 +91,7 @@ export class RegisterComponent {
   validateAddress() {
     const { address } = this.formData;
 
-    if (address.length < 3) {
+    if (address.length < 3 && address.length !== 0) {
       this.isAddressInvalid = true;
     } else if (address.length > 30) {
       this.isAddressInvalid = true;

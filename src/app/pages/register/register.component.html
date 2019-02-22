@@ -4,7 +4,14 @@
   <div>
     <label for="name">Name:</label>
   </div>
-  <input type="text" name="name" [(ngModel)]="this.formData.name" />
+  <input
+    type="text"
+    name="name"
+    [(ngModel)]="this.formData.name"
+    (keyup)="validateName()"
+    #name="ngModel"
+    [class.error]="isNameInvalid && name.touched"
+  />
 
   <div>
     <label for="username">Username:</label>
@@ -13,28 +20,57 @@
     type="text"
     name="username"
     [(ngModel)]="this.formData.username"
-    (keyup)="this.validateUsername()"
+    (keyup)="validateUsername()"
+    #username="ngModel"
+    [class.error]="isUsernameInvalid && username.touched"
   />
 
   <div>
     <label for="password">Password:</label>
   </div>
   <input
-    type="text"
+    type="password"
     name="password"
     [(ngModel)]="this.formData.password"
-    (keyup)="this.validatePassword()"
+    (keyup)="validatePassword()"
+    #password="ngModel"
+    [class.error]="isPasswordInvalid && password.touched"
   />
 
   <div>
     <label for="email">Email:</label>
   </div>
-  <input type="text" name="email" [(ngModel)]="this.formData.email" />
+  <input
+    type="text"
+    name="email"
+    [(ngModel)]="this.formData.email"
+    (keyup)="validateEmail()"
+    #email="ngModel"
+    [class.error]="isEmailInvalid && email.touched"
+  />
 
   <div>
     <label for="address">Address:</label>
   </div>
-  <input type="text" name="address" [(ngModel)]="this.formData.address" />
+  <input
+    type="text"
+    name="address"
+    [(ngModel)]="this.formData.address"
+    (keyup)="validateAddress()"
+    #address="ngModel"
+    [class.error]="isAddressInvalid && address.touched"
+  />
 
-  <button (click)="this.register()">Register</button>
+  <button
+    (click)="this.register()"
+    [disabled]="
+      isNameInvalid ||
+      isUsernameInvalid ||
+      isPasswordInvalid ||
+      isEmailInvalid ||
+      isAddressInvalid
+    "
+  >
+    Register
+  </button>
 </form>
