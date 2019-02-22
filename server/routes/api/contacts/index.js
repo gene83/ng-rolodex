@@ -30,29 +30,22 @@ router.get('/', isAuthenticated, (req, res) => {
 });
 
 router.get('/search/:term', isAuthenticated, (req, res) => {
-  const searchTerm = req.params.term;
+  const searchTerm = req.params.term.toLowerCase();
   const userId = req.user.id;
 
   Contact.where('created_by', userId)
+    .query(qb => {
+      qb.whereRaw(`LOWER(name) LIKE ?`, [`%${searchTerm}%`])
+        .orWhereRaw(`LOWER(address) LIKE ?`, [`%${searchTerm}%`])
+        .orWhereRaw(`LOWER(mobile) LIKE ?`, [`%${searchTerm}%`])
+        .orWhereRaw(`LOWER(work) LIKE ?`, [`%${searchTerm}%`])
+        .orWhereRaw(`LOWER(twitter) LIKE ?`, [`%${searchTerm}%`])
+        .orWhereRaw(`LOWER(instagram) LIKE ?`, [`%${searchTerm}%`])
+        .orWhereRaw(`LOWER(github) LIKE ?`, [`%${searchTerm}%`]);
+    })
     .fetchAll()
     .then(contacts => {
-      if (contacts === null) {
-        return res.json({});
-      }
-
-      contacts = contacts.toJSON();
-
-      const filteredContacts = contacts.filter(contact => {
-        const contactValues = Object.values(contact);
-
-        return contactValues.some(value => {
-          if (typeof value === 'string') {
-            return value.includes(searchTerm);
-          }
-        });
-      });
-
-      return res.json(filteredContacts);
+      return res.json(contacts);
     })
     .catch(err => {
       res.status(500);
