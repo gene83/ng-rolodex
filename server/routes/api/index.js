@@ -63,7 +63,6 @@ router.put('/users', isAuthenticated, (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  console.log(req.body);
   res.json({
     success: true
   });
