@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { LoginService } from '../../services/login.service';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './login.component.html',
@@ -17,7 +18,7 @@ export class LoginComponent {
   isUsernameInvalid: boolean = true;
   isPasswordInvalid: boolean = true;
 
-  constructor(private backend: LoginService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   validateUsername() {
     const { username } = this.formData;
@@ -52,13 +53,20 @@ export class LoginComponent {
   }
 
   login() {
-    this.backend
+    this.auth
       .login(this.formData)
-      .then(res => {
-        console.log(res);
+      .then(() => {
+        const redirectUrl = this.auth.redirectUrl;
+
+        if (redirectUrl) {
+          this.router.navigate([redirectUrl]);
+          this.auth.redirectUrl = '';
+        } else {
+          this.router.navigate(['']);
+        }
       })
       .catch(err => {
-        console.log(err);
+        this.router.navigate(['/login']);
       });
   }
 }

@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
+  redirectUrl: string;
+
   constructor(
     private backend: BackendService,
     private session: SessionService,
@@ -15,8 +17,7 @@ export class AuthService {
 
   login(user) {
     return this.backend.login(user).then(res => {
-      this.session.setSession(res);
-      return this.router.navigate(['']);
+      return this.session.setSession(res);
     });
   }
 }
