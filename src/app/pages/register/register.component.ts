@@ -61,6 +61,46 @@ export class RegisterComponent {
     }
   }
 
+  validateName() {
+    const { name } = this.formData;
+
+    if (name.length > 16) {
+      this.isNameInvalid = true;
+    } else if (name.match(/\W/)) {
+      this.isNameInvalid = true;
+    } else {
+      this.isNameInvalid = false;
+    }
+  }
+
+  validateEmail() {
+    const { email } = this.formData;
+
+    if (email.length < 5) {
+      this.isEmailInvalid = true;
+    } else if (email.length > 30) {
+      this.isEmailInvalid = true;
+    } else if (!email.includes('@')) {
+      this.isEmailInvalid = true;
+    } else if (!email.includes('.')) {
+      this.isEmailInvalid = true;
+    } else {
+      this.isEmailInvalid = false;
+    }
+  }
+
+  validateAddress() {
+    const { address } = this.formData;
+
+    if (address.length < 3) {
+      this.isAddressInvalid = true;
+    } else if (address.length > 30) {
+      this.isAddressInvalid = true;
+    } else {
+      this.isAddressInvalid = false;
+    }
+  }
+
   register() {
     const user = this.formData;
 
