@@ -29,7 +29,7 @@ export class SessionService {
     }
   }
 
-  getSession(user) {
+  getSession() {
     return this.user;
   }
 

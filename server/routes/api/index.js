@@ -40,18 +40,10 @@ router.put('/users', isAuthenticated, (req, res) => {
   User.where('id', userId)
     .fetch()
     .then(dbUser => {
-      dbUser
-        .save(editedUserReq)
-        .then(resUser => {
-          return res.json(resUser);
-        })
-        .catch(err => {
-          res.status(500);
-          return res.json({
-            success: false,
-            error: err
-          });
-        });
+      return dbUser.save(editedUserReq);
+    })
+    .then(resUser => {
+      return res.json(resUser);
     })
     .catch(err => {
       res.status(500);
@@ -64,7 +56,7 @@ router.put('/users', isAuthenticated, (req, res) => {
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
   res.json({
-    success: true
+    username: req.body.username
   });
 });
 
