@@ -61,10 +61,10 @@ export class RegisterComponent {
     }
   }
 
-  registerUser() {
+  register() {
     const user = this.formData;
 
-    this.auth.registerUser(user).then(() => {
+    this.auth.register(user).then(() => {
       this.router.navigate(['/login']).catch(err => {
         this.router.navigate(['/register']);
       });
