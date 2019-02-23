@@ -96,7 +96,7 @@ router.get('/:id', isAuthenticated, (req, res) => {
     });
 });
 
-router.put('/:id', isAuthenticated, (req, res) => {
+router.put('/edit/:id', isAuthenticated, (req, res) => {
   const contactId = req.params.id;
   const {
     name,

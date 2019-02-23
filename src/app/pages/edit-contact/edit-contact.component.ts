@@ -36,5 +36,27 @@ export class EditContactComponent {
       });
   }
 
-  edit() {}
+  edit(editedContact) {
+    this.backend
+      .editContact(editedContact)
+      .then(() => {
+        this.router.navigate(['/contacts']);
+        this.error = '';
+      })
+      .catch(err => {
+        this.error = 'Error deleting contact';
+      });
+  }
+
+  delete(id) {
+    this.backend
+      .deleteContact(id)
+      .then(() => {
+        this.router.navigate(['/contacts']);
+        this.error = '';
+      })
+      .catch(err => {
+        this.error = 'Contact could not be deleted';
+      });
+  }
 }

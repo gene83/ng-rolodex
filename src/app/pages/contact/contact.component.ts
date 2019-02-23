@@ -31,7 +31,7 @@ export class ContactComponent {
         return (this.error = 'Contact not found');
       })
       .catch(err => {
-        this.error = 'Error fetching Contact';
+        this.error = 'Error finding Contact';
       });
   }
 
