@@ -1,0 +1,31 @@
+<h1>Contact: {{ contact.name }}</h1>
+
+<div class="contact-container">
+  <div *ngIf="contact.address">Address: {{ contact.address }}</div>
+
+  <div *ngIf="contact.mobile || contact.work || contact.home">
+    Phone:
+    <div *ngIf="contact.mobile">Mobile: {{ contact.mobile }}</div>
+
+    <div *ngIf="contact.work">Work: {{ contact.work }}</div>
+
+    <div *ngIf="contact.home">Home: {{ contact.home }}</div>
+  </div>
+
+  <div *ngIf="contact.email">Email: {{ contact.email }}</div>
+
+  <div *ngIf="contact.twitter">Twitter: {{ contact.twitter }}</div>
+
+  <div *ngIf="contact.instagram">Instagram: {{ contact.instagram }}</div>
+
+  <div *ngIf="contact.github">Github: {{ contact.github }}</div>
+</div>
+
+<form>
+  <button routerLink="/contact/{{ contact.id }}/edit">
+    Edit
+  </button>
+  <button (click)="(deleteContact)">
+    Delete
+  </button>
+</form>

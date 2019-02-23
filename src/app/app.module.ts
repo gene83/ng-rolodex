@@ -10,6 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AllContactsComponent } from './pages/all-contacts/all-contacts.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 import { HeaderComponent } from './shared/header/header.component';
 
@@ -20,7 +21,8 @@ import { HeaderComponent } from './shared/header/header.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    AllContactsComponent
+    AllContactsComponent,
+    ContactComponent
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   providers: [],
