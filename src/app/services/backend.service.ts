@@ -44,4 +44,8 @@ export class BackendService {
   createContact(contact) {
     return this.http.post('/api/contacts', contact).toPromise();
   }
+
+  getProfile() {
+    return this.http.get('/api/profile').toPromise();
+  }
 }

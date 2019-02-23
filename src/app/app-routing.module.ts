@@ -7,6 +7,7 @@ import { AllContactsComponent } from './pages/all-contacts/all-contacts.componen
 import { ContactComponent } from './pages/contact/contact.component';
 import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
 import { NewContactComponent } from './pages/new-contact/new-contact.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'contacts', component: AllContactsComponent },
   { path: 'contacts/new', component: NewContactComponent },
   { path: 'contacts/:id', component: ContactComponent },
-  { path: 'contacts/:id/edit', component: EditContactComponent }
+  { path: 'contacts/:id/edit', component: EditContactComponent },
+  { path: 'profile', component: ProfileComponent }
 ];
 
 @NgModule({
