@@ -23,7 +23,14 @@ export class HeaderComponent {
     return this.session.isLoggedIn;
   }
 
-  // logout() {
-  //   return this.auth.logout();
-  // }
+  logout() {
+    return this.auth
+      .logout()
+      .then(() => {
+        this.router.navigate(['/login']);
+      })
+      .catch(err => {
+        this.router.navigate(['/']);
+      });
+  }
 }
