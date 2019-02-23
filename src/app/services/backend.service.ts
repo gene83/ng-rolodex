@@ -37,7 +37,7 @@ export class BackendService {
 
   editContact(editedContact) {
     return this.http
-      .put(`/api/contacts/${editedContact.id}/edit`, editedContact)
+      .put(`/api/contacts/${editedContact.id}`, editedContact)
       .toPromise();
   }
 }
