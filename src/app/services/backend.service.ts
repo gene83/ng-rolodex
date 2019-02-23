@@ -48,4 +48,8 @@ export class BackendService {
   getProfile() {
     return this.http.get('/api/profile').toPromise();
   }
+
+  editProfile(editedProfile) {
+    return this.http.put('/api/profile', editedProfile).toPromise();
+  }
 }
