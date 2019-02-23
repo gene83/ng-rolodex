@@ -7,7 +7,7 @@
       type="text"
       name="searchBar"
       [(ngModel)]="this.searchTerm"
-      (keyup)="[searchDb(), checkSearchResults()]"
+      (keyup)="searchDb()"
       #searchBar="ngModel"
       [class.error]="noContactsFound && searchBar.touched"
     />

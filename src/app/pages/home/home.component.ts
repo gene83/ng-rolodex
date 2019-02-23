@@ -23,16 +23,15 @@ export class HomeComponent {
       .then((contacts: Array<Object>) => {
         this.contacts = contacts;
       })
+      .then(() => {
+        if (this.contacts.length === 0 && this.searchTerm.length !== 0) {
+          this.noContactsFound = true;
+        } else {
+          this.noContactsFound = false;
+        }
+      })
       .catch(err => {
         this.contacts = [];
       });
-  }
-
-  checkSearchResults() {
-    if (this.contacts.length === 0 && this.searchTerm.length !== 0) {
-      this.noContactsFound = true;
-    } else {
-      this.noContactsFound = false;
-    }
   }
 }
