@@ -22,4 +22,8 @@ export class BackendService {
   search(term) {
     return this.http.get(`/api/contacts/search/${term}`).toPromise();
   }
+
+  getAllContacts() {
+    return this.http.get('/api/contacts').toPromise();
+  }
 }

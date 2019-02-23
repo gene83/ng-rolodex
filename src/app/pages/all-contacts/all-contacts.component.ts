@@ -7,12 +7,19 @@ import { BackendService } from '../../services/backend.service';
 })
 export class AllContactsComponent {
   contacts: Array<Object> = [];
+  error: string = '';
 
   constructor(private backend: BackendService) {}
 
   ngOnInit() {
-    this.backend.getAllContacts().then(contacts => {
-      this.contacts = contacts;
-    });
+    this.backend
+      .getAllContacts()
+      .then((contacts: Array<Object>) => {
+        this.contacts = contacts;
+        this.error = '';
+      })
+      .catch(err => {
+        this.error = 'Error fetching contacts';
+      });
   }
 }
