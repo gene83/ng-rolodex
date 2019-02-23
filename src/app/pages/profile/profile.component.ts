@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
-import { SessionService } from '../../services/session.service';
 
 @Component({
   templateUrl: './profile.component.html',
@@ -10,16 +9,11 @@ export class ProfileComponent {
   profile: Object;
   error: string = '';
 
-  constructor(
-    private backend: BackendService,
-    private session: SessionService
-  ) {}
+  constructor(private backend: BackendService) {}
 
   ngOnInit() {
-    const user = this.session.getSession();
-
     this.backend
-      .getProfile(user.username)
+      .getProfile()
       .then(profile => {
         this.profile = profile;
         this.error = '';
