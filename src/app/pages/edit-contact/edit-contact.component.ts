@@ -9,7 +9,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditContactComponent {
   error: string = '';
   contactId: number;
-  contact: Object;
   editedContact: Object;
 
   constructor(
@@ -31,7 +30,6 @@ export class EditContactComponent {
       .getContact(this.contactId)
       .then(contact => {
         if (contact) {
-          this.contact = contact;
           this.editedContact = contact;
           return (this.error = '');
         }
