@@ -14,7 +14,6 @@
   </form>
 
   <div class="contacts">
-    <a routerLink="/contacts/{{ contact.id }}}"></a>
     <div *ngFor="let contact of contacts">
       <a routerLink="/contacts/{{ contact.id }}">
         <div>Name: {{ contact.name }}</div>
