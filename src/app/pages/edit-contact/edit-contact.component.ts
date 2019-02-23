@@ -7,10 +7,30 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./edit-contact.component.html']
 })
 export class EditContactComponent {
+  error: string = '';
   contactId: number;
   contact: Object;
-  editedContact: Object;
-  error: string = '';
+  editedContact: {
+    id: number;
+    name: string;
+    mobile: string;
+    work: string;
+    home: string;
+    email: string;
+    twitter: string;
+    instagram: string;
+    github: string;
+  } = {
+    id: this.contactId,
+    name: '',
+    mobile: '',
+    work: '',
+    home: '',
+    email: '',
+    twitter: '',
+    instagram: '',
+    github: ''
+  };
 
   constructor(
     private backend: BackendService,
@@ -36,9 +56,9 @@ export class EditContactComponent {
       });
   }
 
-  edit(editedContact) {
+  edit() {
     this.backend
-      .editContact(editedContact)
+      .editContact(this.editedContact)
       .then(() => {
         this.router.navigate(['/contacts']);
         this.error = '';
@@ -48,9 +68,9 @@ export class EditContactComponent {
       });
   }
 
-  delete(id) {
+  delete() {
     this.backend
-      .deleteContact(id)
+      .deleteContact(this.contactId)
       .then(() => {
         this.router.navigate(['/contacts']);
         this.error = '';
