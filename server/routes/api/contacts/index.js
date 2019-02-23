@@ -57,7 +57,28 @@ router.get('/search/:term', isAuthenticated, (req, res) => {
 });
 
 router.post('/', isAuthenticated, (req, res) => {
-  const newContact = req.body;
+  const {
+    name,
+    mobile,
+    work,
+    home,
+    email,
+    twitter,
+    instagram,
+    github
+  } = req.body;
+
+  const newContact = {
+    name,
+    mobile,
+    work,
+    home,
+    email,
+    twitter,
+    instagram,
+    github,
+    created_by: req.user.id
+  };
 
   new Contact(newContact)
     .save()

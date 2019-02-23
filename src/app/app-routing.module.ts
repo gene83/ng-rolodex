@@ -6,12 +6,14 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AllContactsComponent } from './pages/all-contacts/all-contacts.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
+import { NewContactComponent } from './pages/new-contact/new-contact.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'contacts', component: AllContactsComponent },
+  { path: 'contacts/new', component: NewContactComponent },
   { path: 'contacts/:id', component: ContactComponent },
   { path: 'contacts/:id/edit', component: EditContactComponent }
 ];

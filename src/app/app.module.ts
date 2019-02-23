@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AllContactsComponent } from './pages/all-contacts/all-contacts.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
+import { NewContactComponent } from './pages/new-contact/new-contact.component';
 
 import { HeaderComponent } from './shared/header/header.component';
 
@@ -24,7 +25,8 @@ import { HeaderComponent } from './shared/header/header.component';
     HomeComponent,
     AllContactsComponent,
     ContactComponent,
-    EditContactComponent
+    EditContactComponent,
+    NewContactComponent
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   providers: [],
