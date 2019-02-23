@@ -40,4 +40,8 @@ export class BackendService {
       .put(`/api/contacts/${editedContact.id}`, editedContact)
       .toPromise();
   }
+
+  createContact(contact) {
+    return this.http.post('/api/contacts', contact).toPromise();
+  }
 }
