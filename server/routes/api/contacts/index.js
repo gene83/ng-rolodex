@@ -117,7 +117,7 @@ router.get('/:id', isAuthenticated, (req, res) => {
     });
 });
 
-router.put('/edit/:id', isAuthenticated, (req, res) => {
+router.put('/:id', isAuthenticated, (req, res) => {
   const contactId = req.params.id;
   const {
     name,
@@ -137,7 +137,8 @@ router.put('/edit/:id', isAuthenticated, (req, res) => {
     email,
     twitter,
     instagram,
-    github
+    github,
+    created_by: req.user.id
   };
 
   Contact.where('id', contactId)

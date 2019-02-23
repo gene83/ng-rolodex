@@ -4,82 +4,50 @@
   <div>
     <label for="address">Address:</label>
   </div>
-  <input
-    type="text"
-    value="{{ contact.address }}"
-    [(ngModel)]="editedContact.address"
-  />
+  <input type="text" name="address" [(ngModel)]="editedContact.address" />
 
   <div>
     Phone:
     <div>
       <Label for="mobile">Mobile:</Label>
     </div>
-    <input
-      type="text"
-      value="{{ contact.mobile }}"
-      [(ngModel)]="editedContact.mobile"
-    />
+    <input type="text" name="mobile" [(ngModel)]="editedContact.mobile" />
 
     <div>
       <Label for="work">Work:</Label>
     </div>
-    <input
-      type="text"
-      value="{{ contact.work }}"
-      [(ngModel)]="editedContact.work"
-    />
+    <input type="text" name="work" [(ngModel)]="editedContact.work" />
 
     <div>
       <Label for="home">Home:</Label>
     </div>
-    <input
-      type="text"
-      value="{{ contact.home }}"
-      [(ngModel)]="editedContact.home"
-    />
+    <input type="text" name="home" [(ngModel)]="editedContact.home" />
   </div>
 
   <div>
     <Label for="email">Email:</Label>
   </div>
-  <input
-    type="text"
-    value="{{ contact.email }}"
-    [(ngModel)]="editedContact.email"
-  />
+  <input type="text" name="email" [(ngModel)]="editedContact.email" />
 
   <div>
     <Label for="twitter">Twitter:</Label>
   </div>
-  <input
-    type="text"
-    value="{{ contact.twitter }}"
-    [(ngModel)]="editedContact.twitter"
-  />
+  <input type="text" name="twitter" [(ngModel)]="editedContact.twitter" />
 
   <div>
     <Label for="instagram">Instagram:</Label>
   </div>
-  <input
-    type="text"
-    value="{{ contact.instagram }}"
-    [(ngModel)]="editedContact.instagram"
-  />
+  <input type="text" name="instagram" [(ngModel)]="editedContact.instagram" />
 
   <div>
     <Label for="github">Github:</Label>
   </div>
-  <input
-    type="text"
-    value="{{ contact.github }}"
-    [(ngModel)]="editedContact.github"
-  />
+  <input type="text" name="github" [(ngModel)]="editedContact.github" />
 
-  <button (click)="edit(editedContact)">
+  <button (click)="edit()">
     Edit
   </button>
-  <button (click)="delete(contact.id)">
+  <button (click)="delete()">
     Delete
   </button>
 </form>

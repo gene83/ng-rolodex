@@ -7,10 +7,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./edit-contact.component.html']
 })
 export class EditContactComponent {
-  contactId: number;
-  contact: Object;
-  editedContact: Object;
   error: string = '';
+  contactId: number;
+  editedContact: Object;
 
   constructor(
     private backend: BackendService,
@@ -19,13 +18,19 @@ export class EditContactComponent {
   ) {}
 
   ngOnInit() {
-    this.contactId = +this.route.snapshot.paramMap.get('id');
+    const id = parseInt(this.route.snapshot.paramMap.get('id'));
+
+    if (isNaN(id)) {
+      return this.router.navigate(['/contacts']);
+    }
+
+    this.contactId = id;
 
     this.backend
       .getContact(this.contactId)
       .then(contact => {
         if (contact) {
-          this.contact = contact;
+          this.editedContact = contact;
           return (this.error = '');
         }
 
@@ -36,9 +41,9 @@ export class EditContactComponent {
       });
   }
 
-  edit(editedContact) {
+  edit() {
     this.backend
-      .editContact(editedContact)
+      .editContact(this.editedContact)
       .then(() => {
         this.router.navigate(['/contacts']);
         this.error = '';
@@ -48,9 +53,9 @@ export class EditContactComponent {
       });
   }
 
-  delete(id) {
+  delete() {
     this.backend
-      .deleteContact(id)
+      .deleteContact(this.contactId)
       .then(() => {
         this.router.navigate(['/contacts']);
         this.error = '';

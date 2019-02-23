@@ -18,7 +18,13 @@ export class ContactComponent {
   ) {}
 
   ngOnInit() {
-    this.contactId = +this.route.snapshot.paramMap.get('id');
+    const id = parseInt(this.route.snapshot.paramMap.get('id'));
+
+    if (isNaN(id)) {
+      return this.router.navigate(['/contacts']);
+    }
+
+    this.contactId = id;
 
     this.backend
       .getContact(this.contactId)
@@ -35,9 +41,9 @@ export class ContactComponent {
       });
   }
 
-  delete(id) {
+  delete() {
     this.backend
-      .deleteContact(id)
+      .deleteContact(this.contactId)
       .then(() => {
         this.router.navigate(['/contacts']);
         this.error = '';
