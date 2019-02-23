@@ -33,7 +33,7 @@ export class NewContactComponent {
 
   createContact() {
     this.backend
-      .createContact()
+      .createContact(this.newContact)
       .then(() => {
         this.router.navigate(['/contacts']);
         this.error = '';
