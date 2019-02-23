@@ -2,7 +2,7 @@
 
 <div class="contacts-container">
   <div *ngFor="let contact of contacts">
-    <a routerLink="/contact/{{ contact.id }}">
+    <a routerLink="/contacts/{{ contact.id }}">
       <div>Name: {{ contact.name }}</div>
 
       <div *ngIf="contact.address">Address: {{ contact.address }}</div>
