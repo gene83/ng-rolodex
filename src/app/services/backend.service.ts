@@ -30,4 +30,8 @@ export class BackendService {
   getContact(id) {
     return this.http.get(`/api/contacts/${id}`).toPromise();
   }
+
+  deleteContact(id) {
+    return this.http.delete(`/api/contacts/${id}`).toPromise();
+  }
 }

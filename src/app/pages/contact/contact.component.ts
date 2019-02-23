@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   templateUrl: './contact.component.html',
@@ -11,7 +11,11 @@ export class ContactComponent {
   contact: Object;
   error: string = '';
 
-  constructor(private backend: BackendService, private route: ActivatedRoute) {}
+  constructor(
+    private backend: BackendService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.contactId = +this.route.snapshot.paramMap.get('id');
@@ -28,6 +32,18 @@ export class ContactComponent {
       })
       .catch(err => {
         this.error = 'Error fetching Contact';
+      });
+  }
+
+  delete(id) {
+    this.backend
+      .deleteContact(id)
+      .then(() => {
+        this.router.navigate(['/contacts']);
+        this.error = '';
+      })
+      .catch(err => {
+        this.error = 'Contact could not be deleted';
       });
   }
 }
