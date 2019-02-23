@@ -11,6 +11,10 @@ export class BackendService {
     return this.http.post('/api/login', user).toPromise();
   }
 
+  logout() {
+    return this.http.post('/api/logout', null).toPromise();
+  }
+
   register(user) {
     return this.http.post('/api/register', user).toPromise();
   }

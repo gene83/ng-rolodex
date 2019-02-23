@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BackendService } from './backend.service';
 import { SessionService } from './session.service';
 import { Router } from '@angular/router';
@@ -23,5 +23,11 @@ export class AuthService {
 
   register(user) {
     return this.backend.register(user);
+  }
+
+  logout() {
+    return this.backend.logout().then(() => {
+      this.session.clearSession();
+    });
   }
 }
