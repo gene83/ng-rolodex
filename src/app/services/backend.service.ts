@@ -14,4 +14,8 @@ export class BackendService {
   register(user) {
     return this.http.post('/api/register', user).toPromise();
   }
+
+  search(term) {
+    return this.http.get(`/api/contacts/search/${term}`).toPromise();
+  }
 }

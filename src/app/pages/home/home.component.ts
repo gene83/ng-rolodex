@@ -13,7 +13,7 @@ export class HomeComponent {
   constructor(private backend: BackendService) {}
 
   searchDb() {
-    this.backend.search(searchTerm).then(contacts => {
+    this.backend.search(this.searchTerm).then(contacts => {
       this.contacts = contacts;
     });
   }
