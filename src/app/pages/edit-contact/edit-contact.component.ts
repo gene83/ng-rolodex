@@ -39,7 +39,13 @@ export class EditContactComponent {
   ) {}
 
   ngOnInit() {
-    this.contactId = +this.route.snapshot.paramMap.get('id');
+    const id = parseInt(this.route.snapshot.paramMap.get('id'));
+
+    if (isNaN(id)) {
+      return this.router.navigate(['/contacts']);
+    }
+
+    this.contactId = id;
 
     this.backend
       .getContact(this.contactId)
