@@ -103,10 +103,12 @@ export class RegisterComponent {
   register() {
     const user = this.formData;
 
-    this.auth.register(user).then(() => {
-      this.router.navigate(['/login']).catch(err => {
+    this.auth.register(user)
+      .then(() => {
+        this.router.navigate(['/login'])
+      .catch(err => {
         this.router.navigate(['/register']);
+        });
       });
-    });
   }
 }
