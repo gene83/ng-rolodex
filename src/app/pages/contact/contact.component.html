@@ -22,10 +22,10 @@
 </div>
 
 <form>
-  <button routerLink="/contact/{{ contact.id }}/edit">
+  <button routerLink="/contacts/edit/{{ contact.id }}">
     Edit
   </button>
-  <button (click)="delete(contact.id)">
+  <button (click)="delete()">
     Delete
   </button>
 </form>

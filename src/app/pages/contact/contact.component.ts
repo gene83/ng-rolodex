@@ -35,9 +35,9 @@ export class ContactComponent {
       });
   }
 
-  delete(id) {
+  delete() {
     this.backend
-      .deleteContact(id)
+      .deleteContact(this.contactId)
       .then(() => {
         this.router.navigate(['/contacts']);
         this.error = '';
