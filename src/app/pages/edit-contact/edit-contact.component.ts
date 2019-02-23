@@ -10,27 +10,7 @@ export class EditContactComponent {
   error: string = '';
   contactId: number;
   contact: Object;
-  editedContact: {
-    id: number;
-    name: string;
-    mobile: string;
-    work: string;
-    home: string;
-    email: string;
-    twitter: string;
-    instagram: string;
-    github: string;
-  } = {
-    id: this.contactId,
-    name: '',
-    mobile: '',
-    work: '',
-    home: '',
-    email: '',
-    twitter: '',
-    instagram: '',
-    github: ''
-  };
+  editedContact: Object;
 
   constructor(
     private backend: BackendService,
@@ -52,6 +32,7 @@ export class EditContactComponent {
       .then(contact => {
         if (contact) {
           this.contact = contact;
+          this.editedContact = contact;
           return (this.error = '');
         }
 
