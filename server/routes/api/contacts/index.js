@@ -116,7 +116,8 @@ router.put('/:id', isAuthenticated, (req, res) => {
     email,
     twitter,
     instagram,
-    github
+    github,
+    created_by: req.user.id
   };
 
   Contact.where('id', contactId)

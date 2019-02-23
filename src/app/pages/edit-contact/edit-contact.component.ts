@@ -3,13 +3,13 @@ import { BackendService } from '../../services/backend.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  templateUrl: './edit-contact.component.html',
+  styleUrls: ['./edit-contact.component.html']
 })
-export class ContactComponent {
-  contactId: number;
-  contact: Object;
+export class EditContactComponent {
   error: string = '';
+  contactId: number;
+  editedContact: Object;
 
   constructor(
     private backend: BackendService,
@@ -30,14 +30,26 @@ export class ContactComponent {
       .getContact(this.contactId)
       .then(contact => {
         if (contact) {
-          this.contact = contact;
+          this.editedContact = contact;
           return (this.error = '');
         }
 
         return (this.error = 'Contact not found');
       })
       .catch(err => {
-        this.error = 'Error finding Contact';
+        this.error = 'Error finding contact';
+      });
+  }
+
+  edit() {
+    this.backend
+      .editContact(this.editedContact)
+      .then(() => {
+        this.router.navigate(['/contacts']);
+        this.error = '';
+      })
+      .catch(err => {
+        this.error = 'Error deleting contact';
       });
   }
 

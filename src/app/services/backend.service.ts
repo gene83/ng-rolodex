@@ -34,4 +34,10 @@ export class BackendService {
   deleteContact(id) {
     return this.http.delete(`/api/contacts/${id}`).toPromise();
   }
+
+  editContact(editedContact) {
+    return this.http
+      .put(`/api/contacts/${editedContact.id}`, editedContact)
+      .toPromise();
+  }
 }

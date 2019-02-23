@@ -1,0 +1,53 @@
+<h1>Edit Contact: {{ contact.name }}</h1>
+
+<form class="contact-form">
+  <div>
+    <label for="address">Address:</label>
+  </div>
+  <input type="text" name="address" [(ngModel)]="editedContact.address" />
+
+  <div>
+    Phone:
+    <div>
+      <Label for="mobile">Mobile:</Label>
+    </div>
+    <input type="text" name="mobile" [(ngModel)]="editedContact.mobile" />
+
+    <div>
+      <Label for="work">Work:</Label>
+    </div>
+    <input type="text" name="work" [(ngModel)]="editedContact.work" />
+
+    <div>
+      <Label for="home">Home:</Label>
+    </div>
+    <input type="text" name="home" [(ngModel)]="editedContact.home" />
+  </div>
+
+  <div>
+    <Label for="email">Email:</Label>
+  </div>
+  <input type="text" name="email" [(ngModel)]="editedContact.email" />
+
+  <div>
+    <Label for="twitter">Twitter:</Label>
+  </div>
+  <input type="text" name="twitter" [(ngModel)]="editedContact.twitter" />
+
+  <div>
+    <Label for="instagram">Instagram:</Label>
+  </div>
+  <input type="text" name="instagram" [(ngModel)]="editedContact.instagram" />
+
+  <div>
+    <Label for="github">Github:</Label>
+  </div>
+  <input type="text" name="github" [(ngModel)]="editedContact.github" />
+
+  <button (click)="edit()">
+    Edit
+  </button>
+  <button (click)="delete()">
+    Delete
+  </button>
+</form>
