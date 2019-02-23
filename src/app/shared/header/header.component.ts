@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { SessionService } from '../../services/session.service';
 
 @Component({
+  selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
@@ -22,7 +23,7 @@ export class HeaderComponent {
     return this.session.isLoggedIn;
   }
 
-  logout() {
-    return this.auth.logout();
-  }
+  // logout() {
+  //   return this.auth.logout();
+  // }
 }
