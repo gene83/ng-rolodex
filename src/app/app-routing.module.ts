@@ -4,12 +4,14 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { AllContactsComponent } from './pages/all-contacts/all-contacts.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'contacts', component: AllContactsComponent }
+  { path: 'contacts', component: AllContactsComponent },
+  { path: 'contacts/:id', component: ContactComponent }
 ];
 
 @NgModule({
