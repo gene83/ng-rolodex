@@ -1,0 +1,40 @@
+<div>
+  <form>
+    <div>
+      <label for="searchBar">Search for a contact... </label>
+    </div>
+    <input
+      type="text"
+      name="searchBar"
+      [(ngModel)]="this.searchTerm"
+      (keyup)="[searchDb(), checkSearchResults()]"
+      #searchBar="ngModel"
+      [class.error]="noContactsFound && searchBar.touched"
+    />
+  </form>
+
+  <div class="contacts">
+    <div *ngFor="let contact of contacts">
+      <div>Name: {{ contact.name }}</div>
+
+      <div *ngIf="contact.address">Address: {{ contact.address }}</div>
+
+      <div *ngIf="contact.mobile || contact.work || contact.home">
+        Phone:
+        <div *ngIf="contact.mobile">Mobile: {{ contact.mobile }}</div>
+
+        <div *ngIf="contact.work">Work: {{ contact.work }}</div>
+
+        <div *ngIf="contact.home">Home: {{ contact.home }}</div>
+      </div>
+
+      <div *ngIf="contact.email">Email: {{ contact.email }}</div>
+
+      <div *ngIf="contact.twitter">Twitter: {{ contact.twitter }}</div>
+
+      <div *ngIf="contact.instagram">Instagram: {{ contact.instagram }}</div>
+
+      <div *ngIf="contact.github">Github: {{ contact.github }}</div>
+    </div>
+  </div>
+</div>

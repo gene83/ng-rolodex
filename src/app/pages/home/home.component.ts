@@ -8,13 +8,31 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   searchTerm: string = '';
-  contacts: Object = [];
+  contacts: Array<Object> = [];
+  noContactsFound: boolean = false;
 
   constructor(private backend: BackendService) {}
 
   searchDb() {
-    this.backend.search(this.searchTerm).then(contacts => {
-      this.contacts = contacts;
-    });
+    if (this.searchTerm.length === 0) {
+      return (this.contacts = []);
+    }
+
+    this.backend
+      .search(this.searchTerm)
+      .then((contacts: Array<Object>) => {
+        this.contacts = contacts;
+      })
+      .catch(err => {
+        this.contacts = [];
+      });
+  }
+
+  checkSearchResults() {
+    if (this.contacts.length === 0 && this.searchTerm.length !== 0) {
+      this.noContactsFound = true;
+    } else {
+      this.noContactsFound = false;
+    }
   }
 }
