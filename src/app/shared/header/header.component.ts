@@ -10,6 +10,7 @@ import { SessionService } from '../../services/session.service';
 })
 export class HeaderComponent {
   user: Object;
+  error: string = '';
 
   constructor(
     private router: Router,
@@ -28,9 +29,10 @@ export class HeaderComponent {
       .logout()
       .then(() => {
         this.router.navigate(['/login']);
+        this.error = '';
       })
       .catch(err => {
-        this.router.navigate(['/']);
+        this.error = 'Error Logging Out';
       });
   }
 }
