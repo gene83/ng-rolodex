@@ -59,7 +59,11 @@ passport.deserializeUser((user, done) => {
 
 passport.use(
   new localStrategy((username, password, done) => {
-    return User.where('username', username)
+    username = username.toLowerCase();
+
+    return User.query(qb => {
+      qb.whereRaw(`LOWER(username) LIKE ?`, [username]);
+    })
       .fetch()
       .then(user => {
         if (user === null) {
