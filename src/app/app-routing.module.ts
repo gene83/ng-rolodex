@@ -9,17 +9,39 @@ import { EditContactComponent } from './pages/edit-contact/edit-contact.componen
 import { NewContactComponent } from './pages/new-contact/new-contact.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', canActivate: [AuthGuard], component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'contacts', component: AllContactsComponent },
-  { path: 'contacts/new', component: NewContactComponent },
-  { path: 'contacts/:id', component: ContactComponent },
-  { path: 'contacts/:id/edit', component: EditContactComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'profile/edit', component: EditProfileComponent }
+  {
+    path: 'contacts',
+    canActivate: [AuthGuard],
+    component: AllContactsComponent
+  },
+  {
+    path: 'contacts/new',
+    canActivate: [AuthGuard],
+    component: NewContactComponent
+  },
+  {
+    path: 'contacts/:id',
+    canActivate: [AuthGuard],
+    component: ContactComponent
+  },
+  {
+    path: 'contacts/:id/edit',
+    canActivate: [AuthGuard],
+    component: EditContactComponent
+  },
+  { path: 'profile', canActivate: [AuthGuard], component: ProfileComponent },
+  {
+    path: 'profile/edit',
+    canActivate: [AuthGuard],
+    component: EditProfileComponent
+  },
+  { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
