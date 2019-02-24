@@ -61,16 +61,18 @@
     [class.error]="isAddressInvalid && address.touched"
   />
 
-  <button
-    (click)="this.register()"
-    [disabled]="
-      isNameInvalid ||
-      isUsernameInvalid ||
-      isPasswordInvalid ||
-      isEmailInvalid ||
-      isAddressInvalid
-    "
-  >
-    Register
-  </button>
+  <div>
+    <button
+      (click)="this.register()"
+      [disabled]="
+        isNameInvalid ||
+        isUsernameInvalid ||
+        isPasswordInvalid ||
+        isEmailInvalid ||
+        isAddressInvalid
+      "
+    >
+      Register
+    </button>
+  </div>
 </form>
