@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class NewContactComponent {
   newContact: {
     name: string;
+    address: string;
     mobile: string;
     work: string;
     home: string;
@@ -18,6 +19,7 @@ export class NewContactComponent {
     github: string;
   } = {
     name: '',
+    address: '',
     mobile: '',
     work: '',
     home: '',
