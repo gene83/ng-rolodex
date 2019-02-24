@@ -50,6 +50,6 @@ export class BackendService {
   }
 
   editProfile(editedProfile) {
-    return this.http.put('/api/profile', editedProfile).toPromise();
+    return this.http.put('/api/users', editedProfile).toPromise();
   }
 }
