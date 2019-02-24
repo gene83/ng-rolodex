@@ -27,6 +27,7 @@
 
   <div>
     <button
+      class="btn"
       (click)="login()"
       [disabled]="isUsernameInvalid || isPasswordInvalid"
     >
@@ -37,7 +38,7 @@
   <div>
     Don't have an account?
     <div>
-      <button routerLink="/register">Register here</button>
+      <button class="btn" routerLink="/register">Register here</button>
     </div>
   </div>
 </form>
