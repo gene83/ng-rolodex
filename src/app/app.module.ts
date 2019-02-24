@@ -14,6 +14,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
 import { NewContactComponent } from './pages/new-contact/new-contact.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 import { HeaderComponent } from './shared/header/header.component';
 
@@ -28,7 +29,8 @@ import { HeaderComponent } from './shared/header/header.component';
     ContactComponent,
     EditContactComponent,
     NewContactComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditProfileComponent
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
   providers: [],
