@@ -30,4 +30,7 @@ body {
   &:disabled {
     background-color: #ccc;
   }
+  &:hover {
+    background-color: lighten(#f49822, 10%);
+  }
 }
