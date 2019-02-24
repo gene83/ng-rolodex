@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { BackendService } from '../../services/backend.service';
 
 @Component({
   templateUrl: './register.component.html',
@@ -27,22 +28,32 @@ export class RegisterComponent {
   isEmailInvalid: boolean = false;
   isAddressInvalid: boolean = false;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private backend: BackendService
+  ) {}
 
   validateUsername() {
     const { username } = this.formData;
 
     if (!username) {
-      this.isUsernameInvalid = true;
+      return (this.isUsernameInvalid = true);
     } else if (username.length < 3) {
-      this.isUsernameInvalid = true;
+      return (this.isUsernameInvalid = true);
     } else if (username.length > 16) {
-      this.isUsernameInvalid = true;
+      return (this.isUsernameInvalid = true);
     } else if (username.match(/\W/)) {
-      this.isUsernameInvalid = true;
+      return (this.isUsernameInvalid = true);
     } else {
       this.isUsernameInvalid = false;
     }
+
+    this.backend.checkUsernameAvailability(username).then(res => {
+      if (res) {
+        return (this.isUsernameInvalid = true);
+      }
+    });
   }
 
   validatePassword() {
@@ -103,12 +114,10 @@ export class RegisterComponent {
   register() {
     const user = this.formData;
 
-    this.auth.register(user)
-      .then(() => {
-        this.router.navigate(['/login'])
-      .catch(err => {
+    this.auth.register(user).then(() => {
+      this.router.navigate(['/login']).catch(err => {
         this.router.navigate(['/register']);
-        });
       });
+    });
   }
 }
