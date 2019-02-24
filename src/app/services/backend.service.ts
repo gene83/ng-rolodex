@@ -52,4 +52,8 @@ export class BackendService {
   editProfile(editedProfile) {
     return this.http.put('/api/users', editedProfile).toPromise();
   }
+
+  checkUsernameAvailability(username) {
+    return this.http.get(`api/users/${username}/exists`).toPromise();
+  }
 }

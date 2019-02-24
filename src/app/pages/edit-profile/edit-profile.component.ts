@@ -7,7 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./edit-profile.component.scss']
 })
 export class EditProfileComponent {
-  editedProfile: Object;
+  editedProfile;
+
+  isUsernameUnavailable: boolean = true;
   error: string = '';
 
   constructor(private backend: BackendService, private router: Router) {}
@@ -31,5 +33,17 @@ export class EditProfileComponent {
         this.router.navigate(['/profile']);
       })
       .catch(err => (this.error = 'Error updating Profile'));
+  }
+
+  checkUsernameAvailability() {
+    this.backend
+      .checkUsernameAvailability(this.editedProfile.username)
+      .then(res => {
+        if (res) {
+          return (this.isUsernameUnavailable = true);
+        }
+
+        return (this.isUsernameUnavailable = false);
+      });
   }
 }

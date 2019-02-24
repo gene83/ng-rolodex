@@ -15,6 +15,22 @@ function isAuthenticated(req, res, next) {
   }
 }
 
+router.get('/users/:username/exists', (req, res) => {
+  const username = req.params.username.toLowerCase();
+
+  User.query(qb => {
+    qb.whereRaw(`LOWER(username) LIKE ?`, [username]);
+  })
+    .fetch()
+    .then(user => {
+      if (!user) {
+        return res.send(false);
+      }
+
+      return res.send(true);
+    });
+});
+
 router.get('/profile', isAuthenticated, (req, res) => {
   const userId = req.user.id;
 
