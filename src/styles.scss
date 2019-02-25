@@ -62,6 +62,7 @@ form {
     margin-bottom: 10px;
   }
 }
+
 .contacts-container {
   display: flex;
   flex-flow: row wrap;
@@ -113,6 +114,32 @@ form {
       position: relative;
       bottom: 5px;
       box-shadow: 10px 10px 2px 2px lightgray;
+    }
+  }
+}
+
+.contact-form {
+  max-width: 600px;
+
+  h1 {
+    margin-top: 0px;
+    text-align: center;
+  }
+
+  .input-container {
+    display: flex;
+    max-width: 500px;
+    margin: auto;
+
+    .left {
+      width: 100%;
+      max-width: 300px;
+      margin-right: 25px;
+    }
+
+    .right {
+      width: 100%;
+      max-width: 300px;
     }
   }
 }
