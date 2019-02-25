@@ -39,10 +39,15 @@ form {
   width: 100%;
   max-width: 400px;
   margin: auto;
+  margin-top: 60px;
   background-color: #ddd;
   padding: 25px 25px 40px 25px;
   border-radius: 10px;
   font-size: 16px;
+
+  h1 {
+    text-align: center;
+  }
 
   label {
     font-size: 20px;
@@ -62,17 +67,21 @@ form {
   flex-flow: row wrap;
   align-items: stretch;
   justify-content: center;
+  margin-top: 60px;
+  margin-left: 50px;
+  margin-right: 50px;
 
   .contact-card {
     width: 100%;
     max-width: 300px;
-    margin: auto;
+    margin-left: 20px;
+    margin-right: 20px;
     background-color: #ddd;
-    padding: 25px 25px 40px 25px;
+    padding: 25px;
     border-radius: 10px;
     font-size: 16px;
     margin-bottom: 40px;
-    margin-top: 0px;
+    transition: box-shadow 0.2s ease-in-out;
 
     a {
       text-decoration: none;
@@ -81,6 +90,7 @@ form {
 
       h1 {
         text-align: center;
+        margin-top: 0px;
       }
 
       .info {
@@ -105,4 +115,8 @@ form {
       box-shadow: 10px 10px 2px 2px lightgray;
     }
   }
+}
+
+.error {
+  background: lighten(#cd484d, 15%);
 }

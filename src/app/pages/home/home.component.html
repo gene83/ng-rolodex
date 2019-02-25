@@ -1,4 +1,4 @@
-<div>
+<div class="container">
   <form>
     <div>
       <label for="searchBar">Search for a contact... </label>
@@ -16,7 +16,7 @@
   <div class="contacts-container">
     <div *ngFor="let contact of contacts" class="contact-card">
       <a routerLink="/contacts/{{ contact.id }}">
-        <div>{{ contact.name }}</div>
+        <h1>{{ contact.name }}</h1>
 
         <div class="info" *ngIf="contact.address">
           Address: {{ contact.address }}

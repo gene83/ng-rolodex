@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './new-contact.component.html',
-  styleUrls: ['./new-contact.component.html']
+  styleUrls: ['./new-contact.component.scss']
 })
 export class NewContactComponent {
   newContact: {

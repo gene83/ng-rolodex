@@ -4,11 +4,13 @@
 
   <div class="info" *ngIf="contact.mobile || contact.work || contact.home">
     Phone:
-    <div class="info" *ngIf="contact.mobile">Mobile: {{ contact.mobile }}</div>
+    <div class="phone-info" *ngIf="contact.mobile">
+      Mobile: {{ contact.mobile }}
+    </div>
 
-    <div class="info" *ngIf="contact.work">Work: {{ contact.work }}</div>
+    <div class="phone-info" *ngIf="contact.work">Work: {{ contact.work }}</div>
 
-    <div class="info" *ngIf="contact.home">Home: {{ contact.home }}</div>
+    <div class="phone-info" *ngIf="contact.home">Home: {{ contact.home }}</div>
   </div>
 
   <div class="info" *ngIf="contact.email">Email: {{ contact.email }}</div>
