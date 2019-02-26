@@ -16,41 +16,45 @@
   <div class="contacts-container">
     <div *ngFor="let contact of contacts" class="contact-card">
       <a routerLink="/contacts/{{ contact.id }}">
-        <h1>{{ contact.name }}</h1>
+        <h1>
+          {{ contact.name }}
+        </h1>
 
-        <div class="info" *ngIf="contact.address">
+        <div *ngIf="contact.address" class="info">
           Address: {{ contact.address }}
         </div>
 
         <div
-          class="info"
           *ngIf="contact.mobile || contact.work || contact.home"
+          class="info"
         >
           Phone:
-          <div class="phone-info" *ngIf="contact.mobile">
+          <div *ngIf="contact.mobile" class="phone-info">
             Mobile: {{ contact.mobile }}
           </div>
 
-          <div class="phone-info" *ngIf="contact.work">
+          <div *ngIf="contact.work" class="phone-info">
             Work: {{ contact.work }}
           </div>
 
-          <div class="phone-info" *ngIf="contact.home">
+          <div *ngIf="contact.home" class="phone-info">
             Home: {{ contact.home }}
           </div>
         </div>
 
-        <div class="info" *ngIf="contact.email">Email: {{ contact.email }}</div>
+        <div *ngIf="contact.email" class="info">
+          Email: {{ contact.email }}
+        </div>
 
-        <div class="info" *ngIf="contact.twitter">
+        <div *ngIf="contact.twitter" class="info">
           Twitter: {{ contact.twitter }}
         </div>
 
-        <div class="info" *ngIf="contact.instagram">
+        <div *ngIf="contact.instagram" class="info">
           Instagram: {{ contact.instagram }}
         </div>
 
-        <div class="info" *ngIf="contact.github">
+        <div *ngIf="contact.github" class="info">
           Github: {{ contact.github }}
         </div>
       </a>
