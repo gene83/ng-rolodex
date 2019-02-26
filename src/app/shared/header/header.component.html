@@ -8,30 +8,38 @@
   <div class="links">
     <div class="header-left">
       <h2>
-        <a routerLink="/">Home</a>
+        <a routerLink="/">
+          Home
+        </a>
       </h2>
 
       <h2>
-        <a routerLink="/contacts">View All Contacts</a>
+        <a routerLink="/contacts">
+          View All Contacts
+        </a>
       </h2>
 
       <h2>
-        <a routerLink="/contacts/new">Create Contacts</a>
+        <a routerLink="/contacts/new">
+          Create Contacts
+        </a>
       </h2>
 
       <h2 *ngIf="isLoggedIn()">
-        <a routerLink="/profile">{{ user.username }}</a>
+        <a routerLink="/profile">
+          {{ user.username }}
+        </a>
       </h2>
     </div>
 
     <div class="header-right">
-      <div class="logged-in" *ngIf="isLoggedIn()">
+      <div *ngIf="isLoggedIn() class="logged-in"">
         <button class="btn" (click)="logout()">
           Logout
         </button>
       </div>
 
-      <div class="logged-out" *ngIf="!isLoggedIn()">
+      <div *ngIf="!isLoggedIn()" class="logged-out">
         <button class="btn" routerLink="/login">
           Login
         </button>
