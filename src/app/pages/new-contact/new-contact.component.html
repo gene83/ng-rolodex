@@ -1,55 +1,62 @@
-<h1>Add Contact:</h1>
+<form class="new-contact-form contact-form">
+  <h1>Add Contact:</h1>
+  <div class="input-container">
+    <div class="left">
+      <div>
+        <label for="name">Name:</label>
+      </div>
+      <input type="text" name="name" [(ngModel)]="newContact.name" />
 
-<form class="newContact-form">
-  <div>
-    <label for="name">Name:</label>
-  </div>
-  <input type="text" name="name" [(ngModel)]="newContact.name" />
+      <div>
+        <label for="address">Address:</label>
+      </div>
+      <input type="text" name="address" [(ngModel)]="newContact.address" />
 
-  <div>
-    <label for="address">Address:</label>
-  </div>
-  <input type="text" name="address" [(ngModel)]="newContact.address" />
+      <div>
+        <h2>
+          Phone:
+        </h2>
+        <div>
+          <Label for="mobile">Mobile:</Label>
+        </div>
+        <input type="text" name="mobile" [(ngModel)]="newContact.mobile" />
 
-  <div>
-    Phone:
-    <div>
-      <Label for="mobile">Mobile:</Label>
+        <div>
+          <Label for="work">Work:</Label>
+        </div>
+        <input type="text" name="work" [(ngModel)]="newContact.work" />
+
+        <div>
+          <Label for="home">Home:</Label>
+        </div>
+        <input type="text" name="home" [(ngModel)]="newContact.home" />
+      </div>
     </div>
-    <input type="text" name="mobile" [(ngModel)]="newContact.mobile" />
 
-    <div>
-      <Label for="work">Work:</Label>
+    <div class="right">
+      <div>
+        <Label for="email">Email:</Label>
+      </div>
+      <input type="text" name="email" [(ngModel)]="newContact.email" />
+
+      <div>
+        <Label for="twitter">Twitter:</Label>
+      </div>
+      <input type="text" name="twitter" [(ngModel)]="newContact.twitter" />
+
+      <div>
+        <Label for="instagram">Instagram:</Label>
+      </div>
+      <input type="text" name="instagram" [(ngModel)]="newContact.instagram" />
+
+      <div>
+        <Label for="github">Github:</Label>
+      </div>
+      <input type="text" name="github" [(ngModel)]="newContact.github" />
     </div>
-    <input type="text" name="work" [(ngModel)]="newContact.work" />
-
-    <div>
-      <Label for="home">Home:</Label>
-    </div>
-    <input type="text" name="home" [(ngModel)]="newContact.home" />
   </div>
 
-  <div>
-    <Label for="email">Email:</Label>
-  </div>
-  <input type="text" name="email" [(ngModel)]="newContact.email" />
-
-  <div>
-    <Label for="twitter">Twitter:</Label>
-  </div>
-  <input type="text" name="twitter" [(ngModel)]="newContact.twitter" />
-
-  <div>
-    <Label for="instagram">Instagram:</Label>
-  </div>
-  <input type="text" name="instagram" [(ngModel)]="newContact.instagram" />
-
-  <div>
-    <Label for="github">Github:</Label>
-  </div>
-  <input type="text" name="github" [(ngModel)]="newContact.github" />
-
-  <button (click)="createContact()">
+  <button class="btn" (click)="createContact()">
     Add Contact
   </button>
 </form>

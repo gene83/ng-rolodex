@@ -1,9 +1,147 @@
 /* You can add global styles to this file, and also import other style files */
-html {
-  box-sizing: border-box;
-}
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+.btn {
+  margin: 15px 0;
+  padding: 15px;
+  border: 0px;
+  background: #f49822;
+  color: white;
+  font-size: 14px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 100%;
+
+  &:disabled {
+    background-color: #ccc;
+  }
+  &:hover {
+    background-color: lighten(#f49822, 10%);
+  }
+}
+
+form {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+  margin-top: 60px;
+  background-color: #ddd;
+  padding: 25px 25px 40px 25px;
+  border-radius: 10px;
+  font-size: 14px;
+
+  h1 {
+    text-align: center;
+  }
+
+  label {
+    font-size: 18px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0px;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+}
+
+.contacts-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: center;
+  margin-top: 60px;
+  margin-left: 50px;
+  margin-right: 50px;
+
+  .contact-card {
+    width: 100%;
+    max-width: 300px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-bottom: 40px;
+    transition: box-shadow 0.2s ease-in-out;
+
+    a {
+      text-decoration: none;
+      color: black;
+      font-size: 20px;
+
+      h1 {
+        text-align: center;
+        margin-top: 0px;
+      }
+
+      .info {
+        width: 100%;
+        padding: 10px;
+        background-color: white;
+        border-radius: 10px;
+        border: 0px;
+        font-size: 14px;
+        margin-bottom: 10px;
+
+        .phone-info {
+          margin-left: 20px;
+          margin-top: 5px;
+        }
+      }
+    }
+
+    &:hover {
+      position: relative;
+      bottom: 5px;
+      box-shadow: 10px 10px 2px 2px lightgray;
+    }
+  }
+}
+
+.contact-form {
+  max-width: 600px;
+
+  h1 {
+    margin-top: 0px;
+    text-align: center;
+  }
+
+  .input-container {
+    display: flex;
+    max-width: 500px;
+    margin: auto;
+
+    .left {
+      width: 100%;
+      max-width: 300px;
+      margin-right: 25px;
+    }
+
+    .right {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+}
+
+.error {
+  background: lighten(#cd484d, 15%);
 }

@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   templateUrl: './edit-contact.component.html',
-  styleUrls: ['./edit-contact.component.html']
+  styleUrls: ['./edit-contact.component.scss']
 })
 export class EditContactComponent {
   error: string = '';

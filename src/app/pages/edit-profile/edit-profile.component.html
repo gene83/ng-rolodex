@@ -1,7 +1,6 @@
-<h1>Edit Profile:</h1>
-
 <div class="edit-profile-container">
   <form>
+    <h1>Edit Profile</h1>
     <div>
       <label for="username">Username:</label>
     </div>
@@ -29,6 +28,6 @@
     </div>
     <input type="text" name="address" [(ngModel)]="editedProfile.address" />
 
-    <button (click)="edit()">Edit</button>
+    <button class="btn" (click)="edit()">Edit</button>
   </form>
 </div>

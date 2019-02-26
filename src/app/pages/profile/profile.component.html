@@ -1,11 +1,9 @@
-<h1>My Profile</h1>
-
 <div class="profile-container">
-  <h2>Username: {{ profile.username }}</h2>
+  <h1>{{ profile.username }}</h1>
 
-  <div>Name: {{ profile.name || 'none' }}</div>
-  <div>Email: {{ profile.email || 'none' }}</div>
-  <div>Address: {{ profile.address || 'none' }}</div>
+  <div class="info">Name: {{ profile.name || 'none' }}</div>
+  <div class="info">Email: {{ profile.email || 'none' }}</div>
+  <div class="info">Address: {{ profile.address || 'none' }}</div>
 
-  <button routerLink="/profile/edit">Edit Profile</button>
+  <button class="btn" routerLink="/profile/edit">Edit Profile</button>
 </div>

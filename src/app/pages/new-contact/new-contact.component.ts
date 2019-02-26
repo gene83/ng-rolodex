@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './new-contact.component.html',
-  styleUrls: ['./new-contact.component.html']
+  styleUrls: ['./new-contact.component.scss']
 })
 export class NewContactComponent {
   newContact: {
     name: string;
+    address: string;
     mobile: string;
     work: string;
     home: string;
@@ -18,6 +19,7 @@ export class NewContactComponent {
     github: string;
   } = {
     name: '',
+    address: '',
     mobile: '',
     work: '',
     home: '',
