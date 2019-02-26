@@ -11,7 +11,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .btn {
@@ -20,7 +20,7 @@ body {
   border: 0px;
   background: #f49822;
   color: white;
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 10px;
   width: 100%;
   max-width: 100%;
@@ -41,22 +41,22 @@ form {
   background-color: #ddd;
   padding: 25px 25px 40px 25px;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 14px;
 
   h1 {
     text-align: center;
   }
 
   label {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   input {
     width: 100%;
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
     border: 0px;
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 10px;
   }
 }
@@ -76,9 +76,9 @@ form {
     margin-left: 20px;
     margin-right: 20px;
     background-color: #ddd;
-    padding: 25px;
+    padding: 15px;
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 40px;
     transition: box-shadow 0.2s ease-in-out;
 
@@ -94,11 +94,11 @@ form {
 
       .info {
         width: 100%;
-        padding: 15px;
+        padding: 10px;
         background-color: white;
         border-radius: 10px;
         border: 0px;
-        font-size: 16px;
+        font-size: 14px;
         margin-bottom: 10px;
 
         .phone-info {
